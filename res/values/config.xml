@@ -149,4 +149,6 @@
     <integer name="config_recentsMaxThumbnailCacheSize">6</integer>
     <integer name="config_recentsMaxIconCacheSize">12</integer>
 
+    <!-- Name of an icon pack. -->
+    <string name="iconPackPackageDefault" translatable="false">""</string>
 </resources>
