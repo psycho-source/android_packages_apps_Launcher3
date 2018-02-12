@@ -44,4 +44,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <!-- Misc Category -->
     <string name="misc_category_title">Miscellaneous</string>
 
+    <!-- Icon Size -->
+    <string name="icon_size_title">Icon size</string>
+    <string name="icon_size_extra_small">Extra small (-25%)</string>
+    <string name="icon_size_small">Small (-10%)</string>
+    <string name="icon_size_average">Average (default)</string>
+    <string name="icon_size_large">Large (+10%)</string>
+    <string name="icon_size_extra_large">Extra large (+25%)</string>
+
 </resources>

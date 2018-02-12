@@ -49,6 +49,16 @@
         android:defaultValue=""
         android:persistent="false" />
 
+    <ListPreference
+        android:key="pref_icon_size"
+        android:title="@string/icon_size_title"
+        android:summary="%s"
+        android:entries="@array/icon_size_names"
+        android:entryValues="@array/icon_size_values"
+        android:defaultValue="average"
+        android:persistent="true"
+        />
+
     <SwitchPreference
         android:key="pref_desktop_show_label"
         android:title="@string/desktop_show_label_title"
