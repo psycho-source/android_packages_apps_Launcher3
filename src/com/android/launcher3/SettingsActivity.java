@@ -55,6 +55,7 @@ import android.widget.ListView;
 
 import com.android.launcher3.graphics.IconShapeOverride;
 import com.android.launcher3.notification.NotificationListener;
+import com.android.launcher3.util.ExtraUtils;
 import com.android.launcher3.util.ListViewHighlighter;
 import com.android.launcher3.util.SettingsObserver;
 import com.android.launcher3.views.ButtonPreference;
@@ -169,7 +170,7 @@ public class SettingsActivity extends Activity {
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
                     int index = gridColumns.findIndexOfValue((String) newValue);
                     gridColumns.setSummary(gridColumns.getEntries()[index]);
-                    restart(getActivity());
+                    ExtraUtils.restart(getActivity());
                     return true;
                 }
             });
@@ -180,7 +181,7 @@ public class SettingsActivity extends Activity {
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
                     int index = gridRows.findIndexOfValue((String) newValue);
                     gridRows.setSummary(gridRows.getEntries()[index]);
-                    restart(getActivity());
+                    ExtraUtils.restart(getActivity());
                     return true;
                 }
             });
@@ -191,11 +192,26 @@ public class SettingsActivity extends Activity {
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
                     int index = hotseatColumns.findIndexOfValue((String) newValue);
                     hotseatColumns.setSummary(hotseatColumns.getEntries()[index]);
-                    restart(getActivity());
+                    ExtraUtils.restart(getActivity());
                     return true;
                 }
             });
-        }
+
+            SwitchPreference desktopShowLabel = (SwitchPreference) findPreference(Utilities.DESKTOP_SHOW_LABEL);
+            SwitchPreference allAppsShowLabel = (SwitchPreference) findPreference(Utilities.ALLAPPS_SHOW_LABEL);
+            desktopShowLabel.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    ExtraUtils.restart(getActivity());
+                    return true;
+                }
+            });
+            allAppsShowLabel.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    ExtraUtils.restart(getActivity());
+                    return true;
+                }
+            });
+	}
 
         @Override
         public void onSaveInstanceState(Bundle outState) {
@@ -364,30 +380,5 @@ public class SettingsActivity extends Activity {
                     .putExtra(EXTRA_SHOW_FRAGMENT_ARGS, showFragmentArgs);
             getActivity().startActivity(intent);
         }
-    }
-
-    public static void restart(final Context context) {
-        ProgressDialog.show(context, null, context.getString(R.string.state_loading), true, false);
-        new LooperExecutor(LauncherModel.getWorkerLooper()).execute(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(WAIT_BEFORE_RESTART);
-                } catch (Exception e) {
-                    Log.e("SettingsActivity", "Error waiting", e);
-                }
-
-                Intent intent = new Intent(Intent.ACTION_MAIN)
-                        .addCategory(Intent.CATEGORY_HOME)
-                        .setPackage(context.getPackageName())
-                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-                PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT | PendingIntent.FLAG_ONE_SHOT);
-                AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-                alarmManager.setExact(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime() + 50, pendingIntent);
-
-                android.os.Process.killProcess(android.os.Process.myPid());
-            }
-        });
     }
 }
