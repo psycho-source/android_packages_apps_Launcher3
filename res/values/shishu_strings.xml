@@ -31,6 +31,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="settings_feed">Enable Google feed integration</string>
 
     <!-- Icon packs -->
+    <string name="icons_category_title">Icons</string>
     <string name="icon_pack">Icon pack</string>
     <string name="icon_pack_summary">Select a custom icon pack</string>
 
@@ -39,5 +40,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="desktop_show_label_summary">Show labels below the icons on desktop</string>
     <string name="allapps_show_label_title">AppDrawer Apps Labels</string>
     <string name="allapps_show_label_summary">Show labels below the icons in app drawer</string>
+
+    <!-- Misc Category -->
+    <string name="misc_category_title">Miscellaneous</string>
 
 </resources>

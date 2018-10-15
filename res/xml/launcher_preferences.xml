@@ -16,6 +16,10 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <PreferenceCategory
+        android:key="icons_category"
+        android:title="@string/icons_category_title">
+
     <com.android.launcher3.views.ButtonPreference
         android:key="pref_icon_badging"
         android:title="@string/icon_badging_title"
@@ -28,33 +32,6 @@
                 android:value="notification_badging" />
         </intent>
     </com.android.launcher3.views.ButtonPreference>
-
-    <SwitchPreference
-        android:defaultValue="true"
-        android:key="pref_feed_integration"
-        android:persistent="true"
-        android:title="@string/settings_feed" />
-
-    <SwitchPreference
-        android:key="pref_add_icon_to_home"
-        android:title="@string/auto_add_shortcuts_label"
-        android:summary="@string/auto_add_shortcuts_description"
-        android:defaultValue="true"
-        android:persistent="true" />
-
-    <SwitchPreference
-        android:key="pref_allowRotation"
-        android:title="@string/allow_rotation_title"
-        android:summary="@string/allow_rotation_desc"
-        android:defaultValue="@bool/allow_rotation"
-        android:persistent="true" />
-
-    <SwitchPreference
-        android:key="pref_allowSwipeDownClearAll"
-        android:title="@string/allow_swipe_down_clearall_title"
-        android:summary="@string/allow_swipe_down_clearall_desc"
-        android:defaultValue="@bool/allow_swipe_down_clearall"
-        android:persistent="true" />
 
     <com.android.launcher3.preferences.IconPackPreference
             android:key="pref_iconPackPackage"
@@ -85,6 +62,15 @@
         android:summary="@string/allapps_show_label_summary"
         android:defaultValue="true"
         android:persistent="true"/>
+
+    <SwitchPreference
+        android:key="pref_add_icon_to_home"
+        android:title="@string/auto_add_shortcuts_label"
+        android:summary="@string/auto_add_shortcuts_description"
+        android:defaultValue="true"
+        android:persistent="true" />
+
+     </PreferenceCategory>
 
     <PreferenceCategory
         android:key="grid_category"
@@ -117,5 +103,40 @@
         android:entryValues="@array/grid_values"
         android:defaultValue="-1"
         android:persistent="true" />
+
      </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="misc_category"
+        android:title="@string/misc_category_title">
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="pref_feed_integration"
+        android:persistent="true"
+        android:title="@string/settings_feed" />
+
+    <SwitchPreference
+        android:key="pref_allowRotation"
+        android:title="@string/allow_rotation_title"
+        android:summary="@string/allow_rotation_desc"
+        android:defaultValue="@bool/allow_rotation"
+        android:persistent="true" />
+
+    <SwitchPreference
+        android:key="pref_allowSwipeDownClearAll"
+        android:title="@string/allow_swipe_down_clearall_title"
+        android:summary="@string/allow_swipe_down_clearall_desc"
+        android:defaultValue="@bool/allow_swipe_down_clearall"
+        android:persistent="true" />
+
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="pref_feed_integration"
+        android:persistent="true"
+        android:title="@string/settings_feed" />
+
+     </PreferenceCategory>
+
 </PreferenceScreen>
