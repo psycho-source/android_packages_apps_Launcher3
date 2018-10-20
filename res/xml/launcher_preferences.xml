@@ -121,7 +121,7 @@
         android:title="@string/misc_category_title">
 
     <SwitchPreference
-        android:defaultValue="false"
+        android:defaultValue="true"
         android:key="pref_feed_integration"
         android:persistent="true"
         android:title="@string/settings_feed" />
@@ -139,13 +139,6 @@
         android:summary="@string/allow_swipe_down_clearall_desc"
         android:defaultValue="@bool/allow_swipe_down_clearall"
         android:persistent="true" />
-
-
-    <SwitchPreference
-        android:defaultValue="false"
-        android:key="pref_feed_integration"
-        android:persistent="true"
-        android:title="@string/settings_feed" />
 
      </PreferenceCategory>
 
