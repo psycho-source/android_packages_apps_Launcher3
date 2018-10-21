@@ -24,12 +24,16 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.animation.TimeInterpolator;
+import android.app.Activity;
 import android.app.ActivityOptions;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.res.Resources;
+import android.provider.Settings;
 import android.graphics.Outline;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.UserHandle;
 import android.util.AttributeSet;
 import android.util.FloatProperty;
 import android.util.Log;
@@ -292,7 +296,9 @@ public class TaskView extends FrameLayout implements TaskCallbacks, PageCallback
 
         TaskOutlineProvider(Resources res) {
             mMarginTop = res.getDimensionPixelSize(R.dimen.task_thumbnail_top_margin);
-            mRadius = res.getDimension(R.dimen.task_corner_radius);
+            //mRadius = res.getDimension(R.dimen.task_corner_radius);
+            mRadius = Settings.System.getIntForUser(getActivity().getContentResolver(),
+                    Settings.System.RECENTS_CORNER_RADIUS, 2, UserHandle.USER_CURRENT);
         }
 
         @Override
